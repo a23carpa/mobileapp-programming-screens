@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     Button button;
@@ -22,11 +24,17 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, SecondActivity.class);
                 intent.putExtra("name", "Carl");
-                intent.putExtra("age", 31);
+                intent.putExtra("age", "31");
                 startActivity(intent);
             }
         });
 
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        ImageView image = findViewById(R.id.imageView5);
+        image.setVisibility(View.VISIBLE);
     }
 }
 
