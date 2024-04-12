@@ -10,7 +10,7 @@
         android:id="@+id/Joke"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Knock knock"
+        android:text="Hur gamal är du?"
         app:layout_constraintBottom_toTopOf="@id/btnMain"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,11 +21,11 @@
         android:id="@+id/btnMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Whose there?"
+        android:text="Calculate"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Joke" />
+        app:layout_constraintTop_toBottomOf="@+id/edit" />
 
     <ImageView
         android:id="@+id/imageView5"
@@ -38,4 +38,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/suprise"
         tools:srcCompat="@drawable/suprise" />
+
+    <EditText
+        android:id="@+id/edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Ålder"
+        app:layout_constraintTop_toBottomOf="@+id/Joke"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btnMain"
+        android:inputType="text"
+        android:maxLines="1"
+
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
