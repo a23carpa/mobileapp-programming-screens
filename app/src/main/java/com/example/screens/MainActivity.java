@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 public class MainActivity extends AppCompatActivity {
     Button button;
     EditText edit;
@@ -35,10 +37,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
     @Override
-    protected void onPause() {
-        super.onPause();
+    protected void onStop() {
+        super.onStop();
         ImageView image = findViewById(R.id.imageView5);
         image.setVisibility(View.VISIBLE);
+        button.setVisibility(View.INVISIBLE);
+        edit.setVisibility(View.INVISIBLE);
+        TextView text = findViewById(R.id.Joke);
+        text.setVisibility(View.INVISIBLE);
     }
 }
 
