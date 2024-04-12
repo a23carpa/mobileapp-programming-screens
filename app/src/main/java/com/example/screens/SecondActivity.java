@@ -24,14 +24,19 @@ public class SecondActivity extends AppCompatActivity {
 
 
         int birthYear = birthYear(item);
-        if (birthYear < 2000) {
+        if(birthYear < 1924){
+            view2.setText("Ah so you where born in " + birthYear + "\n"
+                    + "Nah thats wack!");
+        }else if (birthYear < 1990) {
             view2.setText("Ah so you where born in " + birthYear + "\n"
                     + "Thats pretty old");
+        } else if(birthYear > 2020){
+            view2.setText("Ah so you where born in " + birthYear + "\n"
+                    + "Stop messing about young man!");
         } else{
             view2.setText("Ah so you where born in " + birthYear + "\n"
                     + "Thats younger than i tought");
         }
-
     }
 
 
