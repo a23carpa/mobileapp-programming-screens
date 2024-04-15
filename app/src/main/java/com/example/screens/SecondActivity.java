@@ -9,39 +9,24 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class SecondActivity extends AppCompatActivity {
-    int item;
-
+    String item1;
+    String item2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-        TextView view2 = findViewById(R.id.outsideText);
+        TextView view1 = findViewById(R.id.topText);
+        TextView view2 = findViewById(R.id.bottomText);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            item = extras.getInt("value");
+            item1 = extras.getString("name");
+            item2 = extras.getString("age");
         }
 
+        view1.setText("Name: " + item1);
+        view2.setText("Age: " + item2);
 
-        int birthYear = birthYear(item);
-        if(birthYear < 1924){
-            view2.setText("Ah so you where born in " + birthYear + "\n"
-                    + "Nah thats wack!");
-        }else if (birthYear < 1990) {
-            view2.setText("Ah so you where born in " + birthYear + "\n"
-                    + "Thats pretty old");
-        } else if(birthYear > 2020){
-            view2.setText("Ah so you where born in " + birthYear + "\n"
-                    + "Stop messing about young man!");
-        } else{
-            view2.setText("Ah so you where born in " + birthYear + "\n"
-                    + "Thats younger than i tought");
-        }
-    }
-
-
-public int birthYear(int age){
-        return 2024 - age;
     }
 
 }

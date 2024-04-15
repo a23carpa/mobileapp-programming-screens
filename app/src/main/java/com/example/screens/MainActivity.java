@@ -1,51 +1,63 @@
 package com.example.screens;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class MainActivity extends AppCompatActivity {
-    Button button;
-    EditText edit;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ArrayList<recyclerItem> items = new ArrayList<>(Arrays.asList(
+                new recyclerItem("Carl", "31"),
+                new recyclerItem("David","29"),
+                new recyclerItem("Kent","60"),
+                new recyclerItem("Johny","64"),
+                new recyclerItem("Daniel","??"),
+                new recyclerItem("Alexander","??"),
+                new recyclerItem("Markus","Snus"),
+                new recyclerItem("András","Unknown")
+        ));
 
-        button = findViewById(R.id.btnMain);
-        edit = findViewById(R.id.edit);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String item = edit.getText().toString();
-                int finalValue = Integer.parseInt(item);
-                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-                intent.putExtra("value", finalValue);
-                startActivity(intent);
-            }
-        });
+
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, items,
+                new RecyclerViewAdapter.OnClickListener() {
+                    @Override
+                    public void onClick(recyclerItem item) {
+                        Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                        intent.putExtra("name", item.getName()); // Optional
+                        intent.putExtra("age", item.getAge()); // Optional
+                        startActivity(intent);
+                    }
+                });
+
+
+        RecyclerView view = findViewById(R.id.recyclerMain);
+        view.setLayoutManager(new LinearLayoutManager(this));
+        view.setAdapter(adapter);
+
 
     }
-    @Override
-    protected void onStop() {
-        super.onStop();
-        ImageView image = findViewById(R.id.imageView5);
-        image.setVisibility(View.VISIBLE);
-        button.setVisibility(View.INVISIBLE);
-        edit.setVisibility(View.INVISIBLE);
-        TextView text = findViewById(R.id.Joke);
-        text.setVisibility(View.INVISIBLE);
-    }
+
 }
 
 
