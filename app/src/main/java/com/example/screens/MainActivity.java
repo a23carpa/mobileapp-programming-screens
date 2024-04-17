@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ArrayList<recyclerItem> items = new ArrayList<>(Arrays.asList(
+        ArrayList<recyclerItem> listOfPeople = new ArrayList<>(Arrays.asList(
                 new recyclerItem("Carl", "31"),
                 new recyclerItem("David","29"),
                 new recyclerItem("Kent","60"),
@@ -39,13 +39,13 @@ public class MainActivity extends AppCompatActivity {
         ));
 
 
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, items,
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, listOfPeople,
                 new RecyclerViewAdapter.OnClickListener() {
                     @Override
-                    public void onClick(recyclerItem item) {
+                    public void onClick(recyclerItem listItem) {
                         Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-                        intent.putExtra("name", item.getName()); // Optional
-                        intent.putExtra("age", item.getAge()); // Optional
+                        intent.putExtra("name", listItem.getName()); // Optional
+                        intent.putExtra("age", listItem.getAge()); // Optional
                         startActivity(intent);
                     }
                 });

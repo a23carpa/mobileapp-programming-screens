@@ -9,8 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class SecondActivity extends AppCompatActivity {
-    String item1;
-    String item2;
+    String recycleName;
+    String recycleAge;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,12 +20,12 @@ public class SecondActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            item1 = extras.getString("name");
-            item2 = extras.getString("age");
+            recycleName = extras.getString("name");
+            recycleAge= extras.getString("age");
         }
 
-        view1.setText("Name: " + item1);
-        view2.setText("Age: " + item2);
+        view1.setText("Name: " + recycleName);
+        view2.setText("Age: " + recycleAge);
 
     }
 
